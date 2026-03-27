@@ -1,0 +1,41 @@
+﻿<Window x:Class="OnlineSchool.View.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OnlineSchool.View"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Роль"/>
+        <ComboBox x:Name="cbRole" Grid.Row="1" Height="30" Margin="0,6,0,12"/>
+
+        <TextBlock Grid.Row="2" Text="Телефон"/>
+        <TextBox x:Name="tbPhone" Grid.Row="3" Height="30" Margin="0,6,0,12"/>
+
+        <TextBlock Grid.Row="4" Text="Пароль" Margin="0,0,0,6" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="pbPassword" Grid.Row="4" Height="30" Margin="0,22,0,0" VerticalAlignment="Top"/>
+
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+            <Button Content="Регистрация"
+                    Width="120"
+                    Margin="0,0,10,0"
+                    Click="BtnRegister_Click"/>
+
+            <Button Content="Войти"
+                    Width="100"
+                    Click="BtnLogin_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
