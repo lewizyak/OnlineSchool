@@ -59,6 +59,8 @@
           </Key>
           <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Course_Subject">
           <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
@@ -234,6 +236,8 @@
           </Key>
           <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Course" Relationship="Self.FK_Course_Teacher" FromRole="Teacher" ToRole="Course" />
         </EntityType>
         <Association Name="FK_Course_Subject">
@@ -308,7 +312,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PasSchoolEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PasSchoolEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Course" EntityType="Self.Course" />
           <EntitySet Name="Grade" EntityType="Self.Grade" />
           <EntitySet Name="Student" EntityType="Self.Student" />
@@ -345,7 +349,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PasSchoolModelContainer" CdmEntityContainer="PasSchoolEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PasSchoolModelContainer" CdmEntityContainer="PasSchoolEntities1">
           <EntitySetMapping Name="Course">
             <EntityTypeMapping TypeName="PasSchoolModel.Course">
               <MappingFragment StoreEntitySet="Course">
@@ -403,6 +407,8 @@
               <MappingFragment StoreEntitySet="Teacher">
                 <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

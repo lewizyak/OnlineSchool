@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineSchool.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +15,31 @@ using System.Windows.Shapes;
 
 namespace OnlineSchool.View
 {
-    /// <summary>
-    /// Логика взаимодействия для TeacherStubWindow.xaml
-    /// </summary>
     public partial class TeacherStubWindow : Window
     {
-        public TeacherStubWindow()
+        private int _teacherId;
+        private string _fullName;
+
+        public TeacherStubWindow(int teacherId, string fullName)
         {
             InitializeComponent();
+            _teacherId = teacherId;
+            _fullName = fullName;
+
+            tbHello.Text = "Привет, " + _fullName + "!";
         }
 
-        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        private void BtnMyCourses_Click(object sender, RoutedEventArgs e)
+        {
+            new TeacherCoursesWindow(_teacherId).ShowDialog();
+        }
+
+        private void BtnGrades_Click(object sender, RoutedEventArgs e)
+        {
+            new TeacherGradesWindow(_teacherId).ShowDialog();
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
             new LoginWindow().Show();
             Close();

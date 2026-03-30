@@ -32,7 +32,7 @@ namespace OnlineSchool.View
 
         private void LoadCourses()
         {
-            using (var db = new PasSchoolEntities())
+            using (var db = new PasSchoolEntities1())
             {
                 var list = db.StudentCourse
                     .Where(sc => sc.StudentId == _studentId)

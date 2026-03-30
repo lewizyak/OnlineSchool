@@ -6,10 +6,24 @@
         xmlns:local="clr-namespace:OnlineSchool.View"
         mc:Ignorable="d"
         Title="TeacherStubWindow" Height="450" Width="800">
+
     <StackPanel Margin="20">
-        <TextBlock Text="ТОЖЕ ПАУСТО"
-                   FontSize="18"
-                   Margin="0,0,0,20"/>
-        <Button Content="Назад" Width="120" Click="BtnBack_Click"/>
+        <TextBlock x:Name="tbHello" FontSize="18" Margin="0,0,0,16"/>
+
+        <Button Content="Мои курсы"
+                Height="35"
+                Margin="0,0,0,10"
+                Click="BtnMyCourses_Click"/>
+
+        <Button Content="Оценки студентов"
+                Height="35"
+                Margin="0,0,0,10"
+                Click="BtnGrades_Click"/>
+
+        <Button Content="Выйти"
+                Height="30"
+                Width="120"
+                HorizontalAlignment="Right"
+                Click="BtnExit_Click"/>
     </StackPanel>
 </Window>

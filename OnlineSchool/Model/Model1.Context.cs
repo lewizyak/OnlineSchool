@@ -13,10 +13,10 @@ namespace OnlineSchool.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PasSchoolEntities : DbContext
+    public partial class PasSchoolEntities1 : DbContext
     {
-        public PasSchoolEntities()
-            : base("name=PasSchoolEntities")
+        public PasSchoolEntities1()
+            : base("name=PasSchoolEntities1")
         {
         }
     

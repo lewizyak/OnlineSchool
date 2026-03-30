@@ -15,37 +15,35 @@ using System.Windows.Shapes;
 
 namespace OnlineSchool.View
 {
-    /// <summary>
-    /// Логика взаимодействия для GradesWindow.xaml
-    /// </summary>
-    public partial class GradesWindow : Window
+    public partial class TeacherCoursesWindow : Window
     {
-        private int _studentId;
+        private int _teacherId;
 
-        public GradesWindow(int studentId)
+        public TeacherCoursesWindow(int teacherId)
         {
             InitializeComponent();
-            _studentId = studentId;
-
-            LoadGrades();
+            _teacherId = teacherId;
+            LoadCourses();
         }
 
-        private void LoadGrades()
+        private void LoadCourses()
         {
             using (var db = new PasSchoolEntities1())
             {
-                var list = db.Grade
-                    .Where(g => g.StudentId == _studentId)
-                    .Select(g => new
+                var list = db.Course
+                    .Where(c => c.TeacherId == _teacherId)
+                    .Select(c => new
                     {
-                        g.Course.CourseName,
-                        Оценка = g.GradeValue,
-                        Комментарий = g.Comment,
-                        g.GradeDate
+                        c.CourseName,
+                        Предмет = c.Subject.SubjectName,
+                        c.StartDate,
+                        c.EndDate,
+                        c.MaxStudents,
+                        Записано = db.StudentCourse.Count(sc => sc.CourseId == c.CourseId)
                     })
                     .ToList();
 
-                dgGrades.ItemsSource = list;
+                dgCourses.ItemsSource = list;
             }
         }
 

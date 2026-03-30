@@ -42,7 +42,7 @@ namespace OnlineSchool.View
                 return;
             }
 
-            using (var db = new PasSchoolEntities())
+            using (var db = new PasSchoolEntities1())
             {
                 bool exists = db.Student.Any(x => x.Phone == phone);
 

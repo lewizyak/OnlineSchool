@@ -38,9 +38,27 @@ namespace OnlineSchool.View
 
             if (role == "Преподаватель")
             {
-                new TeacherStubWindow().Show();
-                Close();
-                return;
+                if (phone == "" || pass == "")
+                {
+                    MessageBox.Show("Заполни телефон и пароль");
+                    return;
+                }
+
+                using (var db = new PasSchoolEntities1())
+                {
+                    var teacher = db.Teacher
+                        .FirstOrDefault(t => t.Phone == phone && t.Password == pass);
+
+                    if (teacher == null)
+                    {
+                        MessageBox.Show("Неверный телефон или пароль");
+                        return;
+                    }
+
+                    new TeacherStubWindow(teacher.TeacherId, teacher.FullName).Show();
+                    Close();
+                    return;
+                }
             }
 
             if (role == "Администратор")
@@ -56,7 +74,7 @@ namespace OnlineSchool.View
                 return;
             }
 
-            using (var db = new PasSchoolEntities())
+            using (var db = new PasSchoolEntities1())
             {
                 var student = db.Student
                     .FirstOrDefault(s => s.Phone == phone && s.Password == pass);

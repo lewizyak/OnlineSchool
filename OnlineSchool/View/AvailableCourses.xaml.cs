@@ -32,7 +32,7 @@ namespace OnlineSchool.View
 
         private void LoadCourses()
         {
-            using (var db = new PasSchoolEntities())
+            using (var db = new PasSchoolEntities1())
             {
                 var list = db.Course
                     .Where(c => !db.StudentCourse.Any(sc => sc.StudentId == _studentId && sc.CourseId == c.CourseId))
@@ -65,7 +65,7 @@ namespace OnlineSchool.View
             dynamic row = dgAvailableCourses.SelectedItem;
             int courseId = row.CourseId;
 
-            using (var db = new PasSchoolEntities())
+            using (var db = new PasSchoolEntities1())
             {
                 bool exists = db.StudentCourse.Any(sc => sc.StudentId == _studentId && sc.CourseId == courseId);
 
